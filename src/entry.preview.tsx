@@ -18,4 +18,5 @@ import render from "./entry.ssr";
 /**
  * The default export is the QwikCity adapter used by Vite preview.
  */
+console.log("qwik city");
 export default createQwikCity({ render, qwikCityPlan });
