@@ -16,17 +16,8 @@ import {
 } from "@builder.io/qwik/server";
 import { manifest } from "@qwik-client-manifest";
 import Root from "./root";
-import { Hono } from "hono";
 
 export default function (opts: RenderToStreamOptions) {
-  const app = new Hono();
-
-  app.get("/", (c) => {
-    console.log("tttttttttt");
-
-    return c.text("Hello Hono!");
-  });
-
   console.log("xxxxxxxxx");
 
   return renderToStream(<Root />, {
