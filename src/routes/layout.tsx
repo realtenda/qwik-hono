@@ -5,6 +5,7 @@ import {
   Slot,
   useContextProvider,
   useSignal,
+  useTask$,
 } from "@builder.io/qwik";
 import { routeLoader$, type RequestHandler } from "@builder.io/qwik-city";
 
@@ -33,7 +34,13 @@ export default component$(() => {
   const languageData = serverData.value;
   console.log(languageData);
 
-  const language = useSignal(languageData);
+  const language = useSignal("en");
+
+  useTask$(async () => {
+    // A task without `track` any state effectively behaves like a `on mount` hook.
+    console.log("Runs once when the component mounts in the server OR client.");
+    language.value = languageData as string;
+  });
 
   useContextProvider(LanguageProvider, language);
 
