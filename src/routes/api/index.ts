@@ -12,8 +12,30 @@
 // });
 
 import type { RequestHandler } from "@builder.io/qwik-city";
+import sharp from "sharp";
 
-export const onGet: RequestHandler = ({ json }) => {
+const pictureFetcher = async () => {
+  const picture = await fetch("https://picsum.photos/200/300");
+  // console.log(picture);
+
+  return picture;
+};
+
+const fun = async () => {
+  const img = await (await pictureFetcher()).arrayBuffer();
+
+  const imgBuffer = sharp(img).rotate(40).toBuffer();
+
+  // .then(info => { ... })
+  // .catch(err => { ... });
+
+  // console.log("sdfsdfsd")
+
+  return await imgBuffer;
+};
+
+export const onGet: RequestHandler = async ({ send }) => {
   console.log("now onGet");
-  json(200, { message: "Hello World" });
+  send(200, await fun());
+  // json(200, { message: "Hello World" });
 };
