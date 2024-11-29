@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useVisibleTask$ } from "@builder.io/qwik";
 import {
   QwikCityProvider,
   RouterOutlet,
@@ -6,11 +6,18 @@ import {
 } from "@builder.io/qwik-city";
 import { RouterHead } from "./components/router-head/router-head";
 import { isDev } from "@builder.io/qwik/build";
+import { injectSpeedInsights } from "@vercel/speed-insights";
 
 import "./global.css";
 // import { useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
+  useVisibleTask$(
+    () => {
+      injectSpeedInsights();
+    },
+    { strategy: "document-ready" }
+  );
   // const loc = useLocation();
   // const params = loc;
   // console.log("loc");
