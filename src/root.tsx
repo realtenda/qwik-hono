@@ -7,6 +7,7 @@ import {
 import { RouterHead } from "./components/router-head/router-head";
 import { isDev } from "@builder.io/qwik/build";
 import { injectSpeedInsights } from "@vercel/speed-insights";
+import { inject } from "@vercel/analytics";
 
 import "./global.css";
 // import { useLocation } from "@builder.io/qwik-city";
@@ -15,6 +16,7 @@ export default component$(() => {
   useVisibleTask$(
     () => {
       injectSpeedInsights();
+      inject();
     },
     { strategy: "document-ready" }
   );
