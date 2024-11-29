@@ -1,17 +1,30 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { type DocumentHead } from "@builder.io/qwik-city";
+import { LanguageSwitcher } from "../components/router-head/language-switcher/LanguageSwitcher";
 
 export default component$(() => {
+  // const language = useContext(LanguageProvider).value;
+
+  // console.log("language that is set is " + language);
+
+  // const k = useLocation();
+  // console.log(k);
+  // return <>{language === "zw" ? <ShonaVersion /> : <EngishVersion />}</>;
   return (
-    <>
-      <h1>Hello there 👋</h1>
-      <div>
-        Can't wait to see what you build with qwik!
-        <br />
-        Happy coding.
-      </div>
-    </>
+    <LanguageSwitcher
+      // language={language}
+      shVersion={<ShonaVersion />}
+      enVersion={<EnglishVersion />}
+    />
   );
+});
+
+const ShonaVersion = component$(() => {
+  return <div>Shona Version</div>;
+});
+
+const EnglishVersion = component$(() => {
+  return <div>English Version</div>;
 });
 
 export const head: DocumentHead = {

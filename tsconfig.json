@@ -20,6 +20,6 @@
       "~/*": ["./src/*"]
     }
   },
-  "files": ["./.eslintrc.cjs"],
+  "files": ["./.eslintrc.cjs", "src/components/router-head/language-switcher/LanguageSwitcher.tsx"],
   "include": ["src", "./*.d.ts", "./*.config.ts"]
 }

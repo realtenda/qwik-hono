@@ -1,5 +1,12 @@
-import { component$, Slot } from "@builder.io/qwik";
-import type { RequestHandler } from "@builder.io/qwik-city";
+import type { Signal } from "@builder.io/qwik";
+import {
+  component$,
+  createContextId,
+  Slot,
+  useContextProvider,
+  useSignal,
+} from "@builder.io/qwik";
+import { routeLoader$, type RequestHandler } from "@builder.io/qwik-city";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -12,6 +19,23 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
   });
 };
 
+export const useServerData = routeLoader$((c) => {
+  const setLanguage = c.url.searchParams.get("h");
+  // console.log(setLanguage);
+  return setLanguage;
+});
+
+export const LanguageProvider = createContextId<Signal<string>>(
+  "site.language-context"
+);
 export default component$(() => {
+  const serverData = useServerData();
+  const languageData = serverData.value;
+  console.log(languageData);
+
+  const language = useSignal(languageData);
+
+  useContextProvider(LanguageProvider, language);
+
   return <Slot />;
 });

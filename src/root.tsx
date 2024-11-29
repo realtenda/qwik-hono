@@ -8,8 +8,13 @@ import { RouterHead } from "./components/router-head/router-head";
 import { isDev } from "@builder.io/qwik/build";
 
 import "./global.css";
+// import { useLocation } from "@builder.io/qwik-city";
 
 export default component$(() => {
+  // const loc = useLocation();
+  // const params = loc;
+  // console.log("loc");
+
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
    * immediately followed by the document's <head> and <body>.
@@ -17,6 +22,10 @@ export default component$(() => {
    * Don't remove the `<head>` and `<body>` elements.
    */
 
+  return <V1 />;
+});
+
+const V1 = component$(() => {
   return (
     <QwikCityProvider>
       <head>

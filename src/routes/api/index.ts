@@ -1,41 +1,41 @@
-// import { Hono } from "hono";
-// import { handle } from "hono/vercel";
+// // import { Hono } from "hono";
+// // import { handle } from "hono/vercel";
 
-// export const runtime = "edge";
+// // export const runtime = "edge";
 
-// const app = new Hono().basePath("/api");
+// // const app = new Hono().basePath("/api");
 
-// app.get("/hello", (c) => {
-//   return c.json({
-//     message: "Hello Next.js!",
-//   });
-// });
+// // app.get("/hello", (c) => {
+// //   return c.json({
+// //     message: "Hello Next.js!",
+// //   });
+// // });
 
-import type { RequestHandler } from "@builder.io/qwik-city";
-import sharp from "sharp";
+// import type { RequestHandler } from "@builder.io/qwik-city";
+// import sharp from "sharp";
 
-const pictureFetcher = async () => {
-  const picture = await fetch("https://picsum.photos/200/300");
-  // console.log(picture);
+// const pictureFetcher = async () => {
+//   const picture = await fetch("https://picsum.photos/200/300");
+//   // console.log(picture);
 
-  return picture;
-};
+//   return picture;
+// };
 
-const fun = async () => {
-  const img = await (await pictureFetcher()).arrayBuffer();
+// const fun = async () => {
+//   const img = await (await pictureFetcher()).arrayBuffer();
 
-  const imgBuffer = sharp(img).rotate(40).toBuffer();
+//   const imgBuffer = sharp(img).rotate(40).toBuffer();
 
-  // .then(info => { ... })
-  // .catch(err => { ... });
+//   // .then(info => { ... })
+//   // .catch(err => { ... });
 
-  // console.log("sdfsdfsd")
+//   // console.log("sdfsdfsd")
 
-  return await imgBuffer;
-};
+//   return await imgBuffer;
+// };
 
-export const onGet: RequestHandler = async ({ send }) => {
-  console.log("now onGet");
-  send(200, await fun());
-  // json(200, { message: "Hello World" });
-};
+// export const onGet: RequestHandler = async ({ send }) => {
+//   console.log("now onGet");
+//   send(200, await fun());
+//   // json(200, { message: "Hello World" });
+// };
