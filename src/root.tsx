@@ -18,7 +18,7 @@ export default component$(() => {
       injectSpeedInsights();
       inject();
     },
-    { strategy: "document-ready" }
+    { strategy: "document-idle" }
   );
   // const loc = useLocation();
   // const params = loc;
