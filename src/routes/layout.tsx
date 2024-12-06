@@ -8,6 +8,7 @@ import {
   useTask$,
 } from "@builder.io/qwik";
 import { routeLoader$, type RequestHandler } from "@builder.io/qwik-city";
+// import { Hono } from "hono";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
   // Control caching for this request for best performance and to reduce hosting costs:
@@ -30,6 +31,19 @@ export const LanguageProvider = createContextId<Signal<string>>(
   "site.language-context"
 );
 export default component$(() => {
+  console.log("kkkkkkkkkkkk ddas");
+
+  useTask$(async () => {
+    // A task without `track` any state effectively behaves like a `on mount` hook.
+    // const xx = await fetch("http://localhost:5173/app/book");
+    console.log("Runs once when the component mounts in the server OR client.");
+    console.log();
+  });
+
+  console.log("kkkkkkkkkkkk ddas");
+
+  // app.get("/", (c) => c.text("Hono!"));
+
   const serverData = useServerData();
   const languageData = serverData.value;
   console.log(languageData);

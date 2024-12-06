@@ -1,3 +1,5 @@
+import type { RequestHandler } from "@builder.io/qwik-city";
+// import { Hono } from "hono";
 // import { handle } from "hono/vercel";
 // import { Hono } from "hono";
 
@@ -6,13 +8,18 @@
 // const app = new Hono().basePath("/api");
 
 // app.get("/hello", (c) => {
+//   console.log("pppppppppppp");
 //   return c.json({
 //     message: "Hello Next.js!",
 //   });
 // });
-
-import type { RequestHandler } from "@builder.io/qwik-city";
+// const tx = () => {
+// };
+// tx();
 
 export const onGet: RequestHandler = ({ json }) => {
+  console.log("kkkkddskaj");
   json(200, { message: "Hello dsfsdfdfsdf" });
 };
+
+// export default app;
